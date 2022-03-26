@@ -25,95 +25,104 @@ public class Restfulentiy {
     private String rowkey;
     private int rowkeysize;
 
-    public int getRowkeysize() {
-        return rowkeysize;
-    }
-
-    public void setRowkeysize(int rowkeysize) {
-        this.rowkeysize = rowkeysize;
-    }
-
     private List<ColumfamilysBean> columfamilys;
     private List<TermsBean> terms;
+    private List<RangesBean> ranges;
     private List<AggregateBean> aggregate;
-    private List<JtablesBean> jtables;
-    private List<String> cfnames;
+    private List<JtablesBean> j_tables;
+    private List<String> cf_names;
     private List<ValuesBean> values;
 
     public String getOrder() {
         return order;
     }
 
-    public void setOrder(String order) {
-        this.order = order;
-    }
-
     public String getText() {
         return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
     }
 
     public String getVersion() {
         return version;
     }
 
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
     public String getRowkey() {
         return rowkey;
     }
 
-    public void setRowkey(String rowkey) {
-        this.rowkey = rowkey;
+    public int getRowkeysize() {
+        return rowkeysize;
     }
 
     public List<ColumfamilysBean> getColumfamilys() {
         return columfamilys;
     }
 
-    public void setColumfamilys(List<ColumfamilysBean> columfamilys) {
-        this.columfamilys = columfamilys;
-    }
-
     public List<TermsBean> getTerms() {
         return terms;
     }
 
-    public void setTerms(List<TermsBean> terms) {
-        this.terms = terms;
+    public List<RangesBean> getRanges() {
+        return ranges;
     }
 
     public List<AggregateBean> getAggregate() {
         return aggregate;
     }
 
-    public void setAggregate(List<AggregateBean> aggregate) {
-        this.aggregate = aggregate;
+    public List<JtablesBean> getJ_tables() {
+        return j_tables;
     }
 
-    public List<JtablesBean> getJtables() {
-        return jtables;
-    }
-
-    public void setJtables(List<JtablesBean> jtables) {
-        this.jtables = jtables;
-    }
-
-    public List<String> getCfnames() {
-        return cfnames;
-    }
-
-    public void setCfnames(List<String> cfnames) {
-        this.cfnames = cfnames;
+    public List<String> getCf_names() {
+        return cf_names;
     }
 
     public List<ValuesBean> getValues() {
         return values;
+    }
+
+    public void setOrder(String order) {
+        this.order = order;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public void setRowkey(String rowkey) {
+        this.rowkey = rowkey;
+    }
+
+    public void setRowkeysize(int rowkeysize) {
+        this.rowkeysize = rowkeysize;
+    }
+
+    public void setColumfamilys(List<ColumfamilysBean> columfamilys) {
+        this.columfamilys = columfamilys;
+    }
+
+    public void setTerms(List<TermsBean> terms) {
+        this.terms = terms;
+    }
+
+    public void setRanges(List<RangesBean> ranges) {
+        this.ranges = ranges;
+    }
+
+    public void setAggregate(List<AggregateBean> aggregate) {
+        this.aggregate = aggregate;
+    }
+
+    public void setJ_tables(List<JtablesBean> j_tables) {
+        this.j_tables = j_tables;
+    }
+
+    public void setCf_names(List<String> cf_names) {
+        this.cf_names = cf_names;
     }
 
     public void setValues(List<ValuesBean> values) {
@@ -127,83 +136,86 @@ public class Restfulentiy {
          * min : 最小长度
          * max : 最大长度
          * unique : 是否唯一
-         * isNull : 是否可以为空
          * Version : 版本
          * method : 操作方式put/delete/insert
          */
 
+        private String old_cf_name;
         private String cf_name;
         private String type;
-        private String min;
-        private String max;
+        private int min;
+        private int max;
         private String unique;
-        private String isNull;
         private String method;
-        public ColumfamilysBean(String cf_name, String type, String min, String max, String unique, String isNull, String version, String method) {
-            this.cf_name = cf_name;
-            this.type = type;
-            this.min = min;
-            this.max = max;
-            this.unique = unique;
-            this.isNull = isNull;
-            this.method = method;
-        }
 
-        public String getCf_name() {
-            return cf_name;
+        public void setOld_cf_name(String old_cf_name) {
+            this.old_cf_name = old_cf_name;
         }
 
         public void setCf_name(String cf_name) {
             this.cf_name = cf_name;
         }
 
-        public String getType() {
-            return type;
-        }
-
         public void setType(String type) {
             this.type = type;
         }
 
-        public String getMin() {
-            return min;
-        }
-
-        public void setMin(String min) {
+        public void setMin(int min) {
             this.min = min;
         }
 
-        public String getMax() {
-            return max;
-        }
-
-        public void setMax(String max) {
+        public void setMax(int max) {
             this.max = max;
-        }
-
-        public String getUnique() {
-            return unique;
         }
 
         public void setUnique(String unique) {
             this.unique = unique;
         }
 
-        public String getIsNull() {
-            return isNull;
+        public void setMethod(String method) {
+            this.method = method;
         }
 
-        public void setIsNull(String isNull) {
-            this.isNull = isNull;
+        public String getOld_cf_name() {
+            return old_cf_name;
+        }
+
+        public String getCf_name() {
+            return cf_name;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public int getMin() {
+            return min;
+        }
+
+        public int getMax() {
+            return max;
+        }
+
+        public String getUnique() {
+            return unique;
         }
 
         public String getMethod() {
             return method;
         }
+    }
 
-        public void setMethod(String method) {
-            this.method = method;
-        }
+    public static class RangesBean {
+        /**
+
+         * version-from : 从那个版本开始
+         * version-to : 从那个版本结束
+         */
+
+        @SerializedName("version-from")
+        private int versionfrom;
+        @SerializedName("version-to")
+        private int versionto;
     }
 
     public static class TermsBean {
@@ -221,99 +233,10 @@ public class Restfulentiy {
 
         private String cf_name;
         private String c_name;
-        @SerializedName("version-from")
-        private int versionfrom;
-        @SerializedName("version-to")
-        private int versionto;
         private String max;
         private String size;
         private String min;
         private String like;
-        private String tablename;
-
-        public TermsBean(String cf_name, String c_name, int versionfrom, int versionto, String max, String size, String min, String like, String tablename) {
-            this.cf_name = cf_name;
-            this.c_name = c_name;
-            this.versionfrom = versionfrom;
-            this.versionto = versionto;
-            this.max = max;
-            this.size = size;
-            this.min = min;
-            this.like = like;
-            this.tablename = tablename;
-        }
-
-        public String getCf_name() {
-            return cf_name;
-        }
-
-        public void setCf_name(String cf_name) {
-            this.cf_name = cf_name;
-        }
-
-        public String getC_name() {
-            return c_name;
-        }
-
-        public void setC_name(String c_name) {
-            this.c_name = c_name;
-        }
-
-        public int getVersionfrom() {
-            return versionfrom;
-        }
-
-        public void setVersionfrom(int versionfrom) {
-            this.versionfrom = versionfrom;
-        }
-
-        public int getVersionto() {
-            return versionto;
-        }
-
-        public void setVersionto(int versionto) {
-            this.versionto = versionto;
-        }
-
-        public String getMax() {
-            return max;
-        }
-
-        public void setMax(String max) {
-            this.max = max;
-        }
-
-        public String getSize() {
-            return size;
-        }
-
-        public void setSize(String size) {
-            this.size = size;
-        }
-
-        public String getMin() {
-            return min;
-        }
-
-        public void setMin(String min) {
-            this.min = min;
-        }
-
-        public String getLike() {
-            return like;
-        }
-
-        public void setLike(String like) {
-            this.like = like;
-        }
-
-        public String getTablename() {
-            return tablename;
-        }
-
-        public void setTablename(String tablename) {
-            this.tablename = tablename;
-        }
     }
 
     public static class AggregateBean {
@@ -322,7 +245,6 @@ public class Restfulentiy {
          * function : avg/min/max/sum(聚合)
          * as : 别名
          */
-
         private String c_name;
         private String function;
         private String as;
@@ -337,20 +259,20 @@ public class Restfulentiy {
             return c_name;
         }
 
-        public void setC_name(String c_name) {
-            this.c_name = c_name;
-        }
-
         public String getFunction() {
             return function;
         }
 
-        public void setFunction(String function) {
-            this.function = function;
-        }
-
         public String getAs() {
             return as;
+        }
+
+        public void setC_name(String c_name) {
+            this.c_name = c_name;
+        }
+
+        public void setFunction(String function) {
+            this.function = function;
         }
 
         public void setAs(String as) {
@@ -367,21 +289,16 @@ public class Restfulentiy {
         private String tabname;
         private String method;
 
-        public JtablesBean(String tabname, String method) {
-            this.tabname = tabname;
-            this.method = method;
-        }
-
         public String getTabname() {
             return tabname;
         }
 
-        public void setTabname(String tabname) {
-            this.tabname = tabname;
-        }
-
         public String getMethod() {
             return method;
+        }
+
+        public void setTabname(String tabname) {
+            this.tabname = tabname;
         }
 
         public void setMethod(String method) {
@@ -395,74 +312,68 @@ public class Restfulentiy {
          * c_name : 列名
          * value : 值
          */
-        private  String rowKey;
+        private String rowKey;
         private String cf_name;
         private String c_name;
         private String value;
         private int cf_namesize;
         private int c_namesize;
         private int valuesize;
-        public String getRowKey() {
-            return rowKey;
-        }
+
         public void setRowKey(String rowKey) {
             this.rowKey = rowKey;
-        }
-        public int getCf_namesize() {
-            return cf_namesize;
-        }
-
-        public void setCf_namesize(int cf_namesize) {
-            this.cf_namesize = cf_namesize;
-        }
-
-        public int getC_namesize() {
-            return c_namesize;
-        }
-
-        public void setC_namesize(int c_namesize) {
-            this.c_namesize = c_namesize;
-        }
-
-        public int getValuesize() {
-            return valuesize;
-        }
-
-        public void setValuesize(int valuesize) {
-            this.valuesize = valuesize;
-        }
-
-        public ValuesBean(String cf_name, String c_name, String value, int cf_namesize, int c_namesize, int valuesize) {
-            this.cf_name = cf_name;
-            this.c_name = c_name;
-            this.value = value;
-            this.cf_namesize = cf_namesize;
-            this.c_namesize = c_namesize;
-            this.valuesize = valuesize;
-        }
-
-        public String getCf_name() {
-            return cf_name;
         }
 
         public void setCf_name(String cf_name) {
             this.cf_name = cf_name;
         }
 
-        public String getC_name() {
-            return c_name;
-        }
-
         public void setC_name(String c_name) {
             this.c_name = c_name;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+
+        public void setCf_namesize(int cf_namesize) {
+            this.cf_namesize = cf_namesize;
+        }
+
+        public void setC_namesize(int c_namesize) {
+            this.c_namesize = c_namesize;
+        }
+
+        public void setValuesize(int valuesize) {
+            this.valuesize = valuesize;
+        }
+
+        public String getRowKey() {
+            return rowKey;
+        }
+
+        public String getCf_name() {
+            return cf_name;
+        }
+
+        public String getC_name() {
+            return c_name;
         }
 
         public String getValue() {
             return value;
         }
 
-        public void setValue(String value) {
-            this.value = value;
+        public int getCf_namesize() {
+            return cf_namesize;
+        }
+
+        public int getC_namesize() {
+            return c_namesize;
+        }
+
+        public int getValuesize() {
+            return valuesize;
         }
 
         @Override
