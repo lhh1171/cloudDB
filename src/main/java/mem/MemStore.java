@@ -24,12 +24,12 @@ public class MemStore {
     public void alter(List<Restfulentiy.ColumfamilysBean> columfamilys){
         for (Restfulentiy.ColumfamilysBean cf:columfamilys){
             if ("put".equals(cf.getMethod())){
-//                fileInfo.tFilter.add(new FileInfo.TFilter(cf.getCf_name(),cf.getType(),cf.getMin(),cf.getMax(),cf.getUnique()));
+                fileInfo.tFilter.add(new FileInfo.TFilter(cf.getCf_name(),cf.getType(),cf.getMin(),cf.getMax(),cf.isUnique()));
             }else if ("delete".equals(cf.getMethod())){
                 Iterator<FileInfo.TFilter> tFilterIterator=fileInfo.tFilter.iterator();
                 while (tFilterIterator.hasNext()){
                     FileInfo.TFilter tt=tFilterIterator.next();
-                    if (tt.cf_name==cf.getCf_name()){
+                    if (tt.cf_name.equals(cf.getCf_name())){
                         tFilterIterator.remove();
                     }
                 }
@@ -37,12 +37,12 @@ public class MemStore {
                 Iterator<FileInfo.TFilter> tFilterIterator=fileInfo.tFilter.iterator();
                 while (tFilterIterator.hasNext()){
                     FileInfo.TFilter tt=tFilterIterator.next();
-                    if (tt.cf_name==cf.getCf_name()){
+                    if (tt.cf_name.equals(cf.getCf_name())){
                         //这里可以直接改属性
                         tFilterIterator.remove();
                     }
                 }
-//                fileInfo.tFilter.add(new FileInfo.TFilter(cf.getCf_name(),cf.getType(),cf.getMin(),cf.getMax(),cf.getUnique()));
+                fileInfo.tFilter.add(new FileInfo.TFilter(cf.getCf_name(),cf.getType(),cf.getMin(),cf.getMax(),cf.isUnique()));
             } else {
                 System.out.println("error");
             }
@@ -67,9 +67,10 @@ public class MemStore {
             this.Tab_name=Tab_name;
             this.init_time=new Date().getTime();
             for (Restfulentiy.ColumfamilysBean cf:columfamilys){
-//                tFilter.add(new TFilter(cf.getCf_name(),cf.getType(),cf.getMin(),cf.getMax(),cf.getUnique()));
+                tFilter.add(new TFilter(cf.getCf_name(),cf.getType(),cf.getMin(),cf.getMax(),cf.isUnique()));
             }
         }
+
         public static class TFilter {
         //    列族名称
             String cf_name;
@@ -90,5 +91,6 @@ public class MemStore {
                 this.isUnique = isUnique;
             }
         }
+
     }
 }

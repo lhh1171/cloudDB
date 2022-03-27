@@ -1,0 +1,49 @@
+{
+	"columfamilys": [{
+		"old_cf_name": "列族名称 ",
+		"cf_name": "列族名称 ",
+		"type": "类型",
+		"min": "最小长度",
+		"max": "最大长度",
+		"unique": "是否唯一",
+		"method": "操作方式put/delete/insert"
+	}],
+	"ranges": [{
+		"version-from": "原来版本号",
+		"version-to": "新版本号",
+	}],
+	"terms": [{
+		"cf_name": "列族名称",
+		"c_name": "列名",
+		"max": "最大值",
+		"size": "大小",
+		"min": "最小值",
+		"like": "模糊(%表示多个字符，_表示一个字符)",
+		"tablename": "表名"
+	}],
+	"aggregate": [{
+		"c_name": "列名",
+		"function": "avg/min/max/sum(聚合)",
+		"as": "别名"
+	}],
+	"jtables": [{
+		"tabname": "表名",
+		"method": "inner/left/right/full"
+	}],
+	"cfnames": [
+		"rowkey",
+		"id",
+		"name",
+		"age"
+	],
+	"order": "升序降序",
+	"text": "操作解释",
+	"version": "版本号",
+	"rowkey": "唯一标识",
+	"values": [{
+		"cf_name": "列族名称",
+		"c_name": "列名",
+		"value": "值"
+	}]
+	
+}

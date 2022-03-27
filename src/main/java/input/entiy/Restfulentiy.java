@@ -142,11 +142,21 @@ public class Restfulentiy {
 
         private String old_cf_name;
         private String cf_name;
-        private String type;
+        private short type;
         private int min;
         private int max;
-        private String unique;
+        private boolean unique;
         private String method;
+
+        public ColumfamilysBean(String old_cf_name, String cf_name, short type, int min, int max, boolean unique, String method) {
+            this.old_cf_name = old_cf_name;
+            this.cf_name = cf_name;
+            this.type = type;
+            this.min = min;
+            this.max = max;
+            this.unique = unique;
+            this.method = method;
+        }
 
         public void setOld_cf_name(String old_cf_name) {
             this.old_cf_name = old_cf_name;
@@ -156,7 +166,7 @@ public class Restfulentiy {
             this.cf_name = cf_name;
         }
 
-        public void setType(String type) {
+        public void setType(short type) {
             this.type = type;
         }
 
@@ -168,7 +178,7 @@ public class Restfulentiy {
             this.max = max;
         }
 
-        public void setUnique(String unique) {
+        public void setUnique(boolean unique) {
             this.unique = unique;
         }
 
@@ -184,7 +194,7 @@ public class Restfulentiy {
             return cf_name;
         }
 
-        public String getType() {
+        public short getType() {
             return type;
         }
 
@@ -196,7 +206,7 @@ public class Restfulentiy {
             return max;
         }
 
-        public String getUnique() {
+        public boolean isUnique() {
             return unique;
         }
 
@@ -237,6 +247,63 @@ public class Restfulentiy {
         private String size;
         private String min;
         private String like;
+
+        public TermsBean(String cf_name, String c_name, String max, String size, String min, String like) {
+            this.cf_name = cf_name;
+            this.c_name = c_name;
+            this.max = max;
+            this.size = size;
+            this.min = min;
+            this.like = like;
+        }
+
+        public void setCf_name(String cf_name) {
+            this.cf_name = cf_name;
+        }
+
+        public void setC_name(String c_name) {
+            this.c_name = c_name;
+        }
+
+        public void setMax(String max) {
+            this.max = max;
+        }
+
+        public void setSize(String size) {
+            this.size = size;
+        }
+
+        public void setMin(String min) {
+            this.min = min;
+        }
+
+        public void setLike(String like) {
+            this.like = like;
+        }
+
+        public String getCf_name() {
+            return cf_name;
+        }
+
+        public String getC_name() {
+            return c_name;
+        }
+
+        public String getMax() {
+            return max;
+        }
+
+        public String getSize() {
+            return size;
+        }
+
+        public String getMin() {
+            return min;
+        }
+
+        public String getLike() {
+            return like;
+        }
     }
 
     public static class AggregateBean {

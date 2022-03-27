@@ -44,12 +44,6 @@ public class BPlusTree<T, V extends Comparable<V>>{
             this.root = t;
         this.left = (LeafNode<T, V>)this.root.refreshLeft();
 
-//        System.out.println("插入完成,当前根节点为:");
-//        for(int j = 0; j < this.root.number; j++) {
-//            System.out.print((V) this.root.keys[j] + " ");
-//        }
-//        System.out.println();
-
     }
 
 

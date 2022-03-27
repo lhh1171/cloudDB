@@ -54,11 +54,11 @@
 //        List<Restfulentiy.AggregateBean> aggregateBean =new ArrayList<Restfulentiy.AggregateBean>();
 //        restfulentiy.setAggregate(aggregateBean);
 //
-//        List<Restfulentiy.JtablesBean> jtablesBean =new ArrayList<Restfulentiy.JtablesBean>();
-//        restfulentiy.setJtables(jtablesBean);
-//
-//        List<String> cfnamesBean=new ArrayList<String>();
-//        restfulentiy.setCfnames(cfnamesBean);
+////        List<Restfulentiy.JtablesBean> jtablesBean =new ArrayList<Restfulentiy.JtablesBean>();
+////        restfulentiy.setJtables(jtablesBean);
+////
+////        List<String> cfnamesBean=new ArrayList<String>();
+////        restfulentiy.setCfnames(cfnamesBean);
 //
 //        List<Restfulentiy.ValuesBean> valuesBean = new ArrayList<Restfulentiy.ValuesBean>();
 //        restfulentiy.setValues(valuesBean);
