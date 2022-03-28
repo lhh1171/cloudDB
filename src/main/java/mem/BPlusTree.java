@@ -11,7 +11,7 @@ public class BPlusTree<T, V extends Comparable<V>>{
 
     private Node<T, V> root;
     private LeafNode<T, V> left; 
-    //无参构造方法，默认阶为3
+    //无参构造方法，默认阶为8
     public BPlusTree(){
         this(8);
     }
@@ -30,7 +30,7 @@ public class BPlusTree<T, V extends Comparable<V>>{
     public T find(V key){
         T t = this.root.find(key);
         if(t == null){
-            System.out.println("not exist!!");
+            System.out.println(key+": The data dont not exist!!");
         }
         return t;
     }

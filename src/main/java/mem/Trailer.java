@@ -5,6 +5,4 @@ public class Trailer {
     long file_offset;
 //    数据块索引的个数
     int block_count;
-//    版本信息。当前该版本值为1
-    Version version;
 }
