@@ -2,12 +2,10 @@ package mem;
 
 import input.entiy.Restfulentiy;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
+
 import java.util.List;
 
-//对应的是一个表的一个版本的数据
+//对应的是一个表的一个版本的一个列的数据
 public class MemStore {
 
     String cf_name;
