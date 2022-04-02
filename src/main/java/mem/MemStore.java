@@ -10,6 +10,7 @@ public class MemStore {
 
     String cf_name;
     short type;
+    /*库名，表名，版本，列*/
     BPlusTree<Value,String> bPlusTree=new BPlusTree<Value,String>();
 
     public MemStore(String cf_name, short type) {
@@ -23,6 +24,8 @@ public class MemStore {
         }
     }
 
-
+    public String getCell(String rowKey){
+        return bPlusTree.find(rowKey).value;
+    }
 
 }

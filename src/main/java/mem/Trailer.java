@@ -5,4 +5,9 @@ public class Trailer {
     long file_offset;
 //    数据块索引的个数
     int block_count;
+
+    public Trailer() {
+        this.file_offset = 0;
+        this.block_count = 0;
+    }
 }

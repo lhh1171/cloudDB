@@ -4,16 +4,14 @@ package mem;
 public class BPlusTree<T, V extends Comparable<V>>{
     //B+树的阶
     private Integer bTreeOrder;
-    //B+树的非叶子节点最小拥有的子节点数量（同时也是键的最小数量）
-    //private Integer minNUmber;
-    //B+树的非叶子节点最大拥有的节点数量（同时也是键的最大数量）
+
     private Integer maxNumber;
 
     private Node<T, V> root;
     private LeafNode<T, V> left; 
     //无参构造方法，默认阶为8
     public BPlusTree(){
-        this(8);
+        this(4);
     }
 
     //有参构造方法，可以设定B+树的阶
@@ -325,6 +323,7 @@ public class BPlusTree<T, V extends Comparable<V>>{
             //新建叶子节点,作为拆分的右半部分
             LeafNode<T, V> tempNode = new LeafNode<T, V>();
             tempNode.number = this.number - middle;
+
             tempNode.parent = this.parent;
             //如果父节点为空,则新建一个非叶子节点作为父节点,并且让拆分成功的两个叶子节点的指针指向父节点
             if(this.parent == null) {
