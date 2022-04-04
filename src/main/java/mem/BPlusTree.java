@@ -6,7 +6,7 @@ public class BPlusTree<T, V extends Comparable<V>>{
     private Integer bTreeOrder;
 
     private Integer maxNumber;
-
+    int blockIndex;
     private Node<T, V> root;
     private LeafNode<T, V> left; 
     //无参构造方法，默认阶为8
