@@ -243,6 +243,7 @@ class demo2{
         for (int i = 0; i < 100; i++) {
             skipList.insert(i,new Value("a",22,"b","c"));
         }
+        System.out.println("hello");
     }
 }
 

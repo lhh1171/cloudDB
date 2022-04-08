@@ -11,7 +11,7 @@ public class BPlusTree<T, V extends Comparable<V>>{
     private LeafNode<T, V> left; 
     //无参构造方法，默认阶为8
     public BPlusTree(){
-        this(4);
+        this(8);
     }
 
     //有参构造方法，可以设定B+树的阶
@@ -109,17 +109,13 @@ public class BPlusTree<T, V extends Comparable<V>>{
             while(i < this.number){
                 if(key.compareTo((V) this.keys[i]) < 0)
                     break;
+                //+
                 i++;
             }
             if(key.compareTo((V) this.keys[this.number - 1]) >= 0) {
                 i--;
-//                if(this.childs[i].number + 1 <= bTreeOrder) {
-//                    this.keys[this.number - 1] = key;
-//                }
             }
-
-//            System.out.println("非叶子节点查找key: " + this.keys[i]);
-
+//            System.out.println(this.number);
             return this.childs[i].insert(value, key);
         }
 
@@ -151,6 +147,7 @@ public class BPlusTree<T, V extends Comparable<V>>{
             while(key.compareTo((V)this.keys[i]) != 0){
                 i++;
             }
+            System.out.println("非叶子节点"+(i+1));
             //左边节点的最大值可以直接插入,右边的要挪一挪再进行插入
             this.keys[i] = node1.keys[node1.number - 1];
             this.childs[i] = node1;
@@ -187,6 +184,7 @@ public class BPlusTree<T, V extends Comparable<V>>{
             BPlusNode<T, V> tempNode = new BPlusNode<T, V>();
             //非叶节点拆分后应该将其子节点的父节点指针更新为正确的指针
             tempNode.number = this.number - middle;
+//            System.out.println(tempNode.number);
             tempNode.parent = this.parent;
             //如果父节点为空,则新建一个非叶子节点作为父节点,并且让拆分成功的两个非叶子节点的指针指向父节点
             if(this.parent == null) {
@@ -274,7 +272,7 @@ public class BPlusTree<T, V extends Comparable<V>>{
                     break;
                 i++;
             }
-
+            System.out.println("叶子节点"+(i+1));
             //复制数组,完成添加
             Object tempKeys[] = new Object[maxNumber];
             Object tempValues[] = new Object[maxNumber];
@@ -282,6 +280,7 @@ public class BPlusTree<T, V extends Comparable<V>>{
             System.arraycopy(this.values, 0, tempValues, 0, i);
             System.arraycopy(this.keys, i, tempKeys, i + 1, this.number - i);
             System.arraycopy(this.values, i, tempValues, i + 1, this.number - i);
+
             tempKeys[i] = key;
             tempValues[i] = value;
 
@@ -369,4 +368,13 @@ public class BPlusTree<T, V extends Comparable<V>>{
         }
     }
 }
+class test{
+    public static void main(String[] args) {
+        BPlusTree<Integer,Integer> bPlusTree=new BPlusTree<>();
+        for (int i = 0; i < 200; i++) {
+            bPlusTree.insert(i,i);
+        }
 
+        System.out.println();
+    }
+}

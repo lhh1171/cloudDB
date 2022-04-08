@@ -35,7 +35,9 @@ public class SkipList {
     Node newNode = new Node();
     newNode.data = value;
     newNode.maxLevel = level;
-    Node update[] = new Node[level];
+    Node[] update = new Node[level];
+
+    //每一层
     for (int i = 0; i < level; ++i) {
       update[i] = head;
     }
@@ -47,7 +49,8 @@ public class SkipList {
       while (p.forwards[i] != null &&p.forwards[i].data.rowKey .compareTo(value.rowKey)<0) {
         p = p.forwards[i];
       }
-      update[i] = p;// use update save node in search path
+      // use update save node in search path
+      update[i] = p;
     }
 
     // in search path node next node become new node forwords(next)
@@ -106,20 +109,18 @@ public class SkipList {
     System.out.println();
   }
 
-  public class Node {
+  public static class Node {
     private Value data=null;
-    private Node forwards[] = new Node[MAX_LEVEL];
+    private final Node[] forwards = new Node[MAX_LEVEL];
     private int maxLevel = 0;
 
     @Override
     public String toString() {
-      StringBuilder builder = new StringBuilder();
-      builder.append("{ data: ");
-      builder.append(data.rowKey);
-      builder.append("; levels: ");
-      builder.append(maxLevel);
-      builder.append(" }");
-      return builder.toString();
+      return "{ data: " +
+              data.rowKey +
+              "; levels: " +
+              maxLevel +
+              " }";
     }
   }
 }
@@ -128,7 +129,7 @@ class demo{
     SkipList skipList=new SkipList();
     for (int i = 0; i < 50; i++) {
       skipList.insert(new Value("a"+i,1,"1","1"));
-      skipList.printAll();
     }
+    skipList.printAll();
   }
 }
