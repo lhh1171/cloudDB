@@ -3,6 +3,6 @@
 本项目是一个能记录数据版本的数据库，它记录了每个业务对数据库表结构的DDL和事务操作数据的DML，也记录了数据库表的数据由DML产生的版本以及实现老版本的快速回滚。该数据库无需安装客户端，可以直接通过网络传输DDL和DML操作语句，当然我们会有浏览器的网页端方便业务人员上手操作，也可以通过浏览器或CURL等工具发送get post post delete等请求（在传统数据库中叫做sql语句）。
 该数据库可存储企业的关键数据，配合政府事业部门审计数据，以免数据丢失造成审计的不便和企业巨大损失。也可当作一般数据库进行数据存储
 ## 项目架构
-![imag](https://github.com/lhh1171/cloudDB/blob/master/src/main/resources/img/%E6%9E%B6%E6%9E%84.png)
+![imag](https://github.com/lhh1171/cloudDB/blob/master/src/main/resources/img/%E6%9E%B6%E6%9E%842.png)
 ## 上手使用
 本项目还在building,敬请期待
