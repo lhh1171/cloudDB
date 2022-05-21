@@ -1,31 +1,30 @@
 package mem;
 
-import input.entiy.Restfulentiy;
-
-
-import java.util.List;
-
-//对应的是一个表的一个版本的一个列的数据
+//对应的是一个表的一个版本的一个列族的数据
 public class MemStore {
-
+    String db_name;
+    String table_name;
+    int Version;
     String cf_name;
+    /*用库名，表名，版本，列族来hash成的一个key*/
+    int memKey;
     short type;
-    /*库名，表名，版本，列*/
-    BPlusTree<Value,String> bPlusTree=new BPlusTree<Value,String>();
+    SkipList skipList;
 
-    public MemStore(String cf_name, short type) {
+    public MemStore(String db_name, String table_name, int version, String cf_name, short type) {
+        this.db_name = db_name;
+        this.table_name = table_name;
+        Version = version;
         this.cf_name = cf_name;
         this.type = type;
+        this.memKey=(db_name+table_name+version+cf_name).hashCode();
+        this.skipList = new SkipList();
     }
 
-    public void insert(List<Restfulentiy.ValuesBean> valuesBeans, long cellLength){
-        for (Restfulentiy.ValuesBean value:valuesBeans){
-            bPlusTree.insert(new Value(value.getRowKey(),cellLength, value.getC_name(),value.getValue()),value.getRowKey());
-        }
+    public void insertValue(String rowKey, long valueLength, String cname, String value){
+        skipList.insert(new KeyValue(rowKey,valueLength,cname,value));
     }
 
-    public String getCell(String rowKey){
-        return bPlusTree.find(rowKey).value;
+    public MemStore() {
     }
-
 }

@@ -310,7 +310,6 @@ public class BPlusTree<T, V extends Comparable<V>>{
                     }
                 }
 //                System.out.println("叶子节点,插入key: " + key + ",不需要拆分");
-
                 return null;
             }
 
@@ -318,7 +317,7 @@ public class BPlusTree<T, V extends Comparable<V>>{
 
             //如果需要拆分,则从中间把节点拆分差不多的两部分
             Integer middle = this.number / 2;
-
+            System.out.println("开始拆分");
             //新建叶子节点,作为拆分的右半部分
             LeafNode<T, V> tempNode = new LeafNode<T, V>();
             tempNode.number = this.number - middle;
@@ -326,9 +325,7 @@ public class BPlusTree<T, V extends Comparable<V>>{
             tempNode.parent = this.parent;
             //如果父节点为空,则新建一个非叶子节点作为父节点,并且让拆分成功的两个叶子节点的指针指向父节点
             if(this.parent == null) {
-
 //                System.out.println("叶子节点,插入key: " + key + ",父节点为空 新建父节点");
-
                 BPlusNode<T, V> tempBPlusNode = new BPlusNode<T, V>();
                 tempNode.parent = tempBPlusNode;
                 this.parent = tempBPlusNode;
@@ -368,13 +365,12 @@ public class BPlusTree<T, V extends Comparable<V>>{
         }
     }
 }
-class test{
-    public static void main(String[] args) {
-        BPlusTree<Integer,Integer> bPlusTree=new BPlusTree<>();
-        for (int i = 0; i < 200; i++) {
-            bPlusTree.insert(i,i);
-        }
-
-        System.out.println();
-    }
-}
+//class test{
+//    public static void main(String[] args) {
+//        BPlusTree<Integer,Integer> bPlusTree=new BPlusTree<>();
+//        for (int i = 0; i < 200; i++) {
+//            bPlusTree.insert(i,i);
+//        }
+//        System.out.println();
+//    }
+//}
