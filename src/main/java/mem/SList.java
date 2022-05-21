@@ -237,13 +237,13 @@ public class SList<T> {
         }
     }
 }
-class demo2{
-    public static void main(String[] args) {
-        SList<Value> skipList=new SList<>();
-        for (int i = 0; i < 100; i++) {
-            skipList.insert(i,new Value("a",22,"b","c"));
-        }
-        System.out.println("hello");
-    }
-}
+//class demo2{
+//    public static void main(String[] args) {
+//        SList<Value> skipList=new SList<>();
+//        for (int i = 0; i < 100; i++) {
+//            skipList.insert(i,new Value("a",22,"b","c"));
+//        }
+//        System.out.println("hello");
+//    }
+//}
 

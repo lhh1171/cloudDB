@@ -368,13 +368,13 @@ public class BPlusTree<T, V extends Comparable<V>>{
         }
     }
 }
-class test{
-    public static void main(String[] args) {
-        BPlusTree<Integer,Integer> bPlusTree=new BPlusTree<>();
-        for (int i = 0; i < 200; i++) {
-            bPlusTree.insert(i,i);
-        }
-
-        System.out.println();
-    }
-}
+//class test{
+//    public static void main(String[] args) {
+//        BPlusTree<Integer,Integer> bPlusTree=new BPlusTree<>();
+//        for (int i = 0; i < 200; i++) {
+//            bPlusTree.insert(i,i);
+//        }
+//
+//        System.out.println();
+//    }
+//}

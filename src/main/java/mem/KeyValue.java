@@ -2,7 +2,7 @@ package mem;
 
 import java.util.Date;
 
-public class Value {
+public class KeyValue {
 
     String rowKey;
     String cname;
@@ -10,7 +10,7 @@ public class Value {
     String value;
     long valueLength;
 
-    public Value(String rowKey, long valueLength,String cname,String value) {
+    public KeyValue(String rowKey, long valueLength, String cname, String value) {
         Date date=new Date();
         this.timeStamp=date.getTime();
         this.rowKey = rowKey;

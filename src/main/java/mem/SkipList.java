@@ -8,14 +8,14 @@ package mem;
  */
 public class SkipList {
 
-  private static final float SKIPLIST_P = 0.5f;
+  private static final float SKIP_LIST_P = 0.1f;
   private static final int MAX_LEVEL = 16;
 
   private int levelCount = 1;
 
-  private Node head = new Node();  // 带头链表
+  private final Node head = new Node();  // 带头链表
 
-  public Node find(Value value) {
+  public Node find(KeyValue value) {
     Node p = head;
     for (int i = levelCount - 1; i >= 0; --i) {
       while (p.forwards[i] != null && p.forwards[i].data.rowKey .compareTo(value.rowKey)<0) {
@@ -30,7 +30,7 @@ public class SkipList {
     }
   }
 
-  public void insert(Value value) {
+  public void insert(KeyValue value) {
     int level = randomLevel();
     Node newNode = new Node();
     newNode.data = value;
@@ -63,19 +63,19 @@ public class SkipList {
     if (levelCount < level) levelCount = level;
   }
 
-  public void delete(Value value) {
+  public void delete(String rowKey) {
     Node[] update = new Node[levelCount];
     Node p = head;
     for (int i = levelCount - 1; i >= 0; --i) {
-      while (p.forwards[i] != null && p.forwards[i].data.rowKey .compareTo(value.rowKey)<0) {
+      while (p.forwards[i] != null && p.forwards[i].data.rowKey.compareTo(rowKey)<0) {
         p = p.forwards[i];
       }
       update[i] = p;
     }
 
-    if (p.forwards[0] != null && p.forwards[0].data == value) {
+    if (p.forwards[0] != null && p.forwards[0].data.rowKey.equals(rowKey)) {
       for (int i = levelCount - 1; i >= 0; --i) {
-        if (update[i].forwards[i] != null && update[i].forwards[i].data == value) {
+        if (update[i].forwards[i] != null && update[i].forwards[i].data.rowKey.equals(rowKey)) {
           update[i].forwards[i] = update[i].forwards[i].forwards[i];
         }
       }
@@ -95,7 +95,7 @@ public class SkipList {
   //      12.5%的概率返回 3 ...
   private int randomLevel() {
     int level = 1;
-    while (Math.random() < SKIPLIST_P && level < MAX_LEVEL)
+    while (Math.random() < SKIP_LIST_P && level < MAX_LEVEL)
       level += 1;
     return level;
   }
@@ -110,9 +110,9 @@ public class SkipList {
   }
 
   public static class Node {
-    private Value data=null;
+    private KeyValue data=null;
     private final Node[] forwards = new Node[MAX_LEVEL];
-    private int maxLevel = 0;
+    private int maxLevel = 10;
 
     @Override
     public String toString() {
@@ -124,12 +124,4 @@ public class SkipList {
     }
   }
 }
-class demo{
-  public static void main(String[] args) {
-    SkipList skipList=new SkipList();
-    for (int i = 0; i < 50; i++) {
-      skipList.insert(new Value("a"+i,1,"1","1"));
-    }
-    skipList.printAll();
-  }
-}
+
