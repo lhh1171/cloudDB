@@ -2,11 +2,11 @@ package mem;
 
 import java.util.Random;
 
-public class SList<T> {
+public class SList {
     // 最上层链表的头指针
-    private Node<T> head;
+    private Node head;
     // 最上层聊表的尾指针
-    private Node<T> tail;
+    private Node tail;
     // 跳表的层数
     private int level;
     // 插入链表元素的个数
@@ -89,7 +89,7 @@ public class SList<T> {
 
     int currLevel = 1;
     //插入节点
-    public void insert(long score, T value) {
+    public void insert(long score, String value) {
         Node pre = findPreNode(score);
         if (pre.right.score == score) {
             System.out.println("后面节点是否是和要插入节点一样的score");
@@ -209,17 +209,17 @@ public class SList<T> {
         return result;
     }
 
-    private class Node<T> {
+    private class Node {
         long score;
-        T value;
+        String value;
         Node up, down, left, right;
 
-        public Node(T value) {
+        public Node(String value) {
             this.score = -1;
             this.value = value;
         }
 
-        public Node(long score, T value) {
+        public Node(long score, String value) {
             this.score = score;
             this.value = value;
         }
