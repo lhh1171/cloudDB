@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="CloudDB" />
         <module name="cloudDB" />
+        <module name="cloudDB2" />
       </profile>
     </annotationProcessing>
   </component>
