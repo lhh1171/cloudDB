@@ -7,8 +7,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-//对应的是一个表的一个版本的基本元数据
 
+//对应的是一个表的一个版本的基本元数据
 public class FileInfo {
     //当ddl的时候，这些东西就会创建
     String DB_name;

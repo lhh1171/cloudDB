@@ -22,6 +22,11 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.1</version>
+        </dependency>
 <!--        <dependency>-->
 <!--            <groupId>net.sf.json-lib</groupId>-->
 <!--            <artifactId>json-lib</artifactId>-->
