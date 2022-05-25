@@ -182,16 +182,17 @@ public class JavaApiSample implements Watcher {
 
 	}
 	public static void main(String[] args) {
-
 		JavaApiSample sample = new JavaApiSample();
 		sample.createConnection(CONNECTION_STRING, SESSION_TIMEOUT);
-		if (sample.createPath(ZK_PATH, "我是节点初始内容")) {
-			System.out.println();
-			System.out.println("数据内容: " + sample.readData(ZK_PATH).toString() + "\n");
-			sample.writeData(ZK_PATH, "更新后的数据");
-			System.out.println("数据内容: " + sample.readData(ZK_PATH).toString() + "\n");
-			sample.deleteNode(ZK_PATH);
-		}
-		sample.releaseConnection();
+//		if (sample.createPath(ZK_PATH, "我是节点初始内容")) {
+//			System.out.println();
+//			System.out.println("数据内容: " + sample.readData(ZK_PATH).toString() + "\n");
+//			sample.writeData(ZK_PATH, "更新后的数据");
+////			System.out.println("数据内容: " + sample.readData(ZK_PATH).toString() + "\n");
+////			sample.deleteNode(ZK_PATH);
+//		}
+//		sample.releaseConnection();
+		sample.createPath(ZK_PATH,"hello");
+		sample.writeData(ZK_PATH,"hello1");
 	}
 }

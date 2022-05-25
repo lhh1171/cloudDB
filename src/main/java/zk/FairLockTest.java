@@ -52,8 +52,9 @@ public class FairLockTest {
         try {
             path = zk.create(lockName+"/mylock_", "".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
             lockNode = path;
+
             List<String> minPath = zk.getChildren(lockName,false);
-            System.out.println(minPath);
+            System.out.println("jiajia"+minPath);
             Collections.sort(minPath);
             System.out.println(minPath.get(0)+" and path "+path);
             if (!Strings.nullToEmpty(path).trim().isEmpty()&&!Strings.nullToEmpty(minPath.get(0)).trim().isEmpty()&&path.equals(lockName+"/"+minPath.get(0))) {
@@ -83,7 +84,6 @@ public class FairLockTest {
                             e.printStackTrace();
                         }
                     }
-
                 });
                 if(stat != null){
                     System.out.println("Thread " + Thread.currentThread().getId() + " waiting for " + lockName + "/" + watchNode);
@@ -122,7 +122,7 @@ public class FairLockTest {
                     FairLockTest test = new FairLockTest();
                     try {
                         test.lock();
-                        Thread.sleep(3000);
+                        Thread.sleep(300000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
