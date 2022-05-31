@@ -7,6 +7,7 @@ public class ValueNode {
     String value;
     long timeStamp;
     long valueLength;
+    ValueNode next;
 
     public ValueNode(String cname, String value, long valueLength) {
         Date date=new Date();
@@ -15,4 +16,5 @@ public class ValueNode {
         this.value = value;
         this.valueLength = valueLength;
     }
+
 }
