@@ -15,6 +15,7 @@ public class KeyValue {
             temp=temp.next;
             if (temp==null){
                 temp=new ValueNode(cname, value, valueLength);
+                break;
             }
         }
     }
