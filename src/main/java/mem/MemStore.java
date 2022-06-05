@@ -22,7 +22,15 @@ public class MemStore {
     }
 
     public void insertValue(String rowKey, long valueLength, String cname, String value){
-        skipList.insert(new KeyValue(rowKey,valueLength,cname,value));
+        /*TODO
+        *  */
+        SkipList.SkipNode node = skipList.find(rowKey);
+        KeyValue valueListHead= node.data;
+        if (valueListHead==null){
+            skipList.insert(new KeyValue(rowKey,new ValueNode(cname,value,valueLength)));
+        }else{
+            valueListHead.insert(cname, value, valueLength);
+        }
     }
 
     public MemStore() {

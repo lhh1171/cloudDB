@@ -7,8 +7,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-//对应的是一个表的一个版本的基本元数据
 
+//对应的是一个表的一个版本的基本元数据
 public class FileInfo {
     //当ddl的时候，这些东西就会创建
     String DB_name;
@@ -40,22 +40,10 @@ public class FileInfo {
             if ("put".equals(cf.getMethod())){
                 tFilter.add(new FileInfo.TFilter(cf.getCf_name(),cf.getType(),cf.getMin(),cf.getMax(),cf.isUnique()));
             }else if ("delete".equals(cf.getMethod())){
-                Iterator<TFilter> tFilterIterator=tFilter.iterator();
-                while (tFilterIterator.hasNext()){
-                    FileInfo.TFilter tt=tFilterIterator.next();
-                    if (tt.cf_name.equals(cf.getCf_name())){
-                        tFilterIterator.remove();
-                    }
-                }
+                tFilter.removeIf(tt -> tt.cf_name.equals(cf.getCf_name()));
             }else if ("update".equals(cf.getMethod())){
-                Iterator<FileInfo.TFilter> tFilterIterator=tFilter.iterator();
-                while (tFilterIterator.hasNext()){
-                    FileInfo.TFilter tt=tFilterIterator.next();
-                    if (tt.cf_name.equals(cf.getCf_name())){
-                        //这里可以直接改属性
-                        tFilterIterator.remove();
-                    }
-                }
+                //这里可以直接改属性
+                tFilter.removeIf(tt -> tt.cf_name.equals(cf.getCf_name()));
                 tFilter.add(new FileInfo.TFilter(cf.getCf_name(),cf.getType(),cf.getMin(),cf.getMax(),cf.isUnique()));
             } else {
                 System.out.println("error");

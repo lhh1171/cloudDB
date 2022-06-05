@@ -1,21 +1,22 @@
 package mem;
 
-import java.util.Date;
-
 public class KeyValue {
-
     String rowKey;
-    String cname;
-    long timeStamp;
-    String value;
-    long valueLength;
+    ValueNode valueListHead;
 
-    public KeyValue(String rowKey, long valueLength, String cname, String value) {
-        Date date=new Date();
-        this.timeStamp=date.getTime();
+    public KeyValue(String rowKey, ValueNode valueListHead) {
         this.rowKey = rowKey;
-        this.valueLength = valueLength;
-        this.cname=cname;
-        this.value=value;
+        this.valueListHead = valueListHead;
+    }
+
+    public void insert(String cname, String value, long valueLength) {
+        ValueNode temp=valueListHead;
+        while (true){
+            temp=temp.next;
+            if (temp==null){
+                temp=new ValueNode(cname, value, valueLength);
+                break;
+            }
+        }
     }
 }

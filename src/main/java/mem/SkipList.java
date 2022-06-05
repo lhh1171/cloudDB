@@ -13,17 +13,17 @@ public class SkipList {
 
   private int levelCount = 1;
 
-  private final Node head = new Node();  // 带头链表
+  private final SkipNode head = new SkipNode();  // 带头链表
 
-  public Node find(KeyValue value) {
-    Node p = head;
+  public SkipNode find(String rowKey) {
+    SkipNode p = head;
     for (int i = levelCount - 1; i >= 0; --i) {
-      while (p.forwards[i] != null && p.forwards[i].data.rowKey .compareTo(value.rowKey)<0) {
+      while (p.forwards[i] != null && p.forwards[i].data.rowKey .compareTo(rowKey)<0) {
         p = p.forwards[i];
       }
     }
 
-    if (p.forwards[0] != null && p.forwards[0].data == value) {
+    if (p.forwards[0] != null && p.forwards[0].data.rowKey == rowKey) {
       return p.forwards[0];
     } else {
       return null;
@@ -32,10 +32,10 @@ public class SkipList {
 
   public void insert(KeyValue value) {
     int level = randomLevel();
-    Node newNode = new Node();
+    SkipNode newNode = new SkipNode();
     newNode.data = value;
     newNode.maxLevel = level;
-    Node[] update = new Node[level];
+    SkipNode[] update = new SkipNode[level];
 
     //每一层
     for (int i = 0; i < level; ++i) {
@@ -43,7 +43,7 @@ public class SkipList {
     }
 
     // record every level largest value which smaller than insert value in update[]
-    Node p = head;
+    SkipNode p = head;
 
     for (int i = level - 1; i >= 0; --i) {
       while (p.forwards[i] != null &&p.forwards[i].data.rowKey .compareTo(value.rowKey)<0) {
@@ -64,8 +64,8 @@ public class SkipList {
   }
 
   public void delete(String rowKey) {
-    Node[] update = new Node[levelCount];
-    Node p = head;
+    SkipNode[] update = new SkipNode[levelCount];
+    SkipNode p = head;
     for (int i = levelCount - 1; i >= 0; --i) {
       while (p.forwards[i] != null && p.forwards[i].data.rowKey.compareTo(rowKey)<0) {
         p = p.forwards[i];
@@ -101,7 +101,7 @@ public class SkipList {
   }
 
   public void printAll() {
-    Node p = head;
+    SkipNode p = head;
     while (p.forwards[0] != null) {
       System.out.println(p.forwards[0]);
       p = p.forwards[0];
@@ -109,9 +109,9 @@ public class SkipList {
     System.out.println();
   }
 
-  public static class Node {
-    private KeyValue data=null;
-    private final Node[] forwards = new Node[MAX_LEVEL];
+  static class SkipNode {
+    KeyValue data = null;
+    private final SkipNode[] forwards = new SkipNode[MAX_LEVEL];
     private int maxLevel = 10;
 
     @Override

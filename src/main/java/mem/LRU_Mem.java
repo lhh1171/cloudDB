@@ -10,30 +10,21 @@ import java.util.HashMap;
  */
 
 public class LRU_Mem {
-    private final static LRUCache<Integer,MemStore> columns=new LRUCache<Integer, MemStore>();
+    private final static LRUCache<Integer,MemStore> columnFamilyS=new LRUCache<>();
 
-    public static LRUCache<Integer, MemStore> getColumns() {
-        return columns;
+    public void setColumnFamily(MemStore columnFamily){
+        columnFamilyS.add(columnFamily.memKey,columnFamily);
     }
 
-    public void setColumns(String s, MemStore column){
-        Integer key=s.hashCode();
-        columns.add(key,column);
-    }
-
-    public MemStore getTree(String s){
-        Integer key=s.hashCode();
-        return columns.get(key);
-    }
-
-    public MemStore setColumnsFromDisk(){
-        return null;
+    public MemStore getMemStore(String memKey){
+        Integer key=memKey.hashCode();
+        return columnFamilyS.get(key);
     }
 
     /**
      *基于散列表的LRU算法
      */
-    public static class LRUCache<K, V> {
+    private static class LRUCache<K, V> {
 
         /**
          * 默认链表容量
@@ -43,12 +34,12 @@ public class LRU_Mem {
         /**
          * 头结点
          */
-        private DNode<K, V> headNode;
+        private final DNode<K, V> headNode;
 
         /**
          * 尾节点
          */
-        private DNode<K, V> tailNode;
+        private final DNode<K, V> tailNode;
 
         /**
          * 链表长度
@@ -58,12 +49,12 @@ public class LRU_Mem {
         /**
          * 链表容量
          */
-        private Integer capacity;
+        private final Integer capacity;
 
         /**
          * 散列表存储key
          */
-        private HashMap<K, DNode<K, V>> table;
+        private final HashMap<K, DNode<K, V>> table;
 
         /**
          * 双向链表
@@ -94,7 +85,6 @@ public class LRU_Mem {
                 this.key = key;
                 this.value = value;
             }
-
         }
 
         public LRUCache(int capacity) {
