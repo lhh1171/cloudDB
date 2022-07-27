@@ -3,6 +3,7 @@ package input.Service;
 
 import input.handler.ActiveAndInActiceHandler;
 import input.handler.HttpMethodHandler;
+import input.handler.JsonToRestFulEntiyHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -31,7 +32,7 @@ public class NettyServer {
                             ch.pipeline().addLast("http-chunked", new ChunkedWriteHandler());
                             ch.pipeline().addLast("请求方式分类",new HttpMethodHandler());
                             ch.pipeline().addLast("初次过滤",new ActiveAndInActiceHandler());
-//                            ch.pipeline().addLast("json转换成restfulentiy",new JsonToRestFulEntiyHandler());
+                            ch.pipeline().addLast("json转换成restfulentiy",new JsonToRestFulEntiyHandler());
                         }
                     });
             ChannelFuture channelFuture = serverBootstrap.bind(8080).sync();
